@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -62,6 +62,8 @@ public class GetHit : MonoBehaviour
         hurt = true;
         playerMovementScript.playerStats.canMove = false;
         playerMovementScript.soundManager.PlayHitSound();
+        playerMovementScript.playerStats.health--;
+        Debug.Log(playerMovementScript.playerStats.health);
         StartCoroutine("Recover");
     }
     private IEnumerator Recover()

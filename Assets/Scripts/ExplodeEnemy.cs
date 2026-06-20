@@ -39,12 +39,14 @@ public class ExplodeEnemy : MonoBehaviour
         //Start jump in place coroutine
         StartCoroutine("Jump");
     }
+    private bool Exploded = false;
 
     private void Update()
     {
         //Check to see how close the player is to the enemy
-        if (Vector3.Distance(transform.position, playerTransform.position) > enemyStats.explodeDist)
+        if (Exploded && Vector3.Distance(transform.position, playerTransform.position) < enemyStats.explodeDist)
         {
+            Exploded = true;
             //Explode if player is within range
             StartCoroutine("Explode");
         }
